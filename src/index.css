@@ -1,0 +1,455 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-main: "PingARLT", "Tajawal", sans-serif;
+  --font-display: "El Messiri", "PingARLT", serif;
+
+  --color-primary: #c6aad0;
+  --color-primary-dark: #8b6b9a;
+  --color-primary-light: #f0e4f5;
+  --color-primary-reverse: #3d2450;
+  --color-primary-glow: rgba(198, 170, 208, 0.45);
+
+  --color-gold: #c9a962;
+  --color-gold-light: #f5ecd8;
+  --color-rose: #e8b4c8;
+  --color-rose-deep: #9d5c7a;
+
+  --bg-primary: #fdfbfe;
+  --bg-secondary: #faf7fc;
+  --bg-elevated: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --product-bg: #ffffff;
+
+  --header-text-color: #1a1220;
+  --store-text-primary: #1a1220;
+  --store-text-secondary: #5c4d66;
+  --store-text-muted: #8a7a94;
+
+  --product-border-color: rgba(198, 170, 208, 0.35);
+  --product-image-height: 18rem;
+  --product-enhanced-btn-bg: linear-gradient(135deg, #b899c8 0%, #9a7aaa 100%);
+  --product-enhanced-btn-color: #ffffff;
+
+  --footer-bg: linear-gradient(180deg, #f8f4fa 0%, #f0eaf4 100%);
+  --footer-text-color: #3d2450;
+  --bottom-footer-bg: #ebe3f0;
+
+  --bottom-nav-bg: linear-gradient(180deg, #d4bddc 0%, #c6aad0 100%);
+  --bottom-nav-text-color: #3d2450;
+
+  --wa-btn-bg: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  --wa-btn-text-color: #ffffff;
+  --product-promo-bg: linear-gradient(135deg, #c0394a 0%, #922b3a 100%);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --shadow-soft: 0 4px 24px rgba(61, 36, 80, 0.06);
+  --shadow-card: 0 8px 32px rgba(61, 36, 80, 0.08);
+  --shadow-card-hover: 0 20px 48px rgba(61, 36, 80, 0.14);
+  --shadow-modal: 0 24px 80px rgba(61, 36, 80, 0.22);
+  --shadow-header: 0 8px 32px rgba(61, 36, 80, 0.08);
+  --shadow-glow: 0 0 40px var(--color-primary-glow);
+
+  --gradient-hero-overlay: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(61, 36, 80, 0.15) 60%,
+    rgba(61, 36, 80, 0.35) 100%
+  );
+  --gradient-section: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  --gradient-brand: linear-gradient(135deg, #3d2450 0%, #8b6b9a 40%, #c6aad0 100%);
+  --gradient-shimmer: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 62%
+  );
+
+  --announcement-height: 38px;
+  --header-height: 72px;
+}
+
+.dark {
+  --bg-primary: #141216;
+  --bg-secondary: #0e0c10;
+  --bg-elevated: #1c1820;
+  --header-bg: rgba(20, 18, 22, 0.94);
+  --header-text-color: #f5eef8;
+  --store-text-primary: #f5eef8;
+  --store-text-secondary: #c4b4cc;
+  --store-text-muted: #8a7a94;
+  --product-bg: #1c1820;
+  --product-border-color: rgba(198, 170, 208, 0.2);
+  --footer-bg: linear-gradient(180deg, #1c1820 0%, #141216 100%);
+  --footer-text-color: #e8dff0;
+  --bottom-footer-bg: #0e0c10;
+  --bottom-nav-bg: linear-gradient(180deg, #2a2030 0%, #1c1820 100%);
+  --bottom-nav-text-color: #f5eef8;
+}
+
+@layer base {
+  * {
+    @apply border-[var(--product-border-color)];
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    font-size: 15px;
+    line-height: 1.75;
+    background-color: var(--bg-primary);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(198, 170, 208, 0.18), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(201, 169, 98, 0.06), transparent);
+    color: var(--store-text-primary);
+  }
+
+  ::selection {
+    background: rgba(198, 170, 208, 0.45);
+    color: var(--color-primary-reverse);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: 99px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+}
+
+.font-pingarlt,
+html[dir="rtl"] body {
+  font-family: var(--font-main);
+}
+
+html[dir="ltr"] body {
+  font-family: "Montserrat", var(--font-main), sans-serif;
+}
+
+@layer utilities {
+  .max-w-content {
+    max-width: 1320px;
+  }
+
+  .text-gradient-brand {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass-panel {
+    background: var(--header-bg);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  }
+
+  .bg-storeBG {
+    background-color: var(--bg-primary);
+  }
+}
+
+/* ─── مكوّنات UI فاخرة ─── */
+@layer components {
+  .sahr-section-title {
+    @apply relative text-center;
+  }
+
+  .sahr-section-title h2 {
+    font-family: var(--font-display);
+    @apply text-3xl font-bold tracking-tight text-[var(--store-text-primary)] sm:text-4xl md:text-[2.5rem];
+  }
+
+  .sahr-section-title .sahr-divider {
+    @apply mx-auto my-3 flex items-center justify-center gap-3;
+  }
+
+  .sahr-divider::before,
+  .sahr-divider::after {
+    content: "";
+    height: 1px;
+    width: 3rem;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  }
+
+  .sahr-divider-gem {
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .sahr-card {
+    background: var(--product-bg);
+    border: 1px solid var(--product-border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s ease;
+  }
+
+  .sahr-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(198, 170, 208, 0.65);
+  }
+
+  .product-enhanced-btn {
+    background: var(--product-enhanced-btn-bg);
+    color: var(--product-enhanced-btn-color);
+    box-shadow: 0 4px 16px rgba(139, 107, 154, 0.35);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      filter 0.25s ease;
+  }
+
+  .product-enhanced-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(139, 107, 154, 0.45);
+    filter: brightness(1.05);
+  }
+
+  .product-enhanced-btn:active {
+    transform: translateY(0);
+  }
+
+  .sahr-pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition;
+    background: var(--color-primary-light);
+    color: var(--color-primary-reverse);
+    border: 1px solid rgba(198, 170, 208, 0.4);
+  }
+
+  .sahr-pill:hover,
+  .sahr-pill.active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .trust-badge {
+    @apply flex flex-col items-center gap-2 rounded-2xl px-4 py-5 text-center;
+    background: var(--bg-elevated);
+    border: 1px solid var(--product-border-color);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* هيدر */
+.trans_header {
+  background: transparent;
+}
+
+.store-header.is-scrolled .glass-header {
+  box-shadow: var(--shadow-header);
+  border-bottom: 1px solid var(--product-border-color);
+}
+
+/* شريط إعلان */
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-marquee-rtl {
+  animation: marquee-rtl 32s linear infinite;
+}
+
+.announcement-bar {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-reverse) 0%,
+    var(--color-primary-dark) 25%,
+    var(--color-primary) 50%,
+    var(--color-primary-dark) 75%,
+    var(--color-primary-reverse) 100%
+  );
+  background-size: 200% 100%;
+  animation: announcement-shine 8s ease infinite;
+}
+
+@keyframes announcement-shine {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* منتج — لمعة */
+.with-shine-animation .product-card__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-shimmer);
+  transform: translateX(120%);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.with-shine-animation:hover .product-card__image::after {
+  transform: translateX(-120%);
+}
+
+.product-card__image {
+  background: linear-gradient(160deg, #fdfbfe 0%, #f5eef8 50%, #faf7fc 100%);
+}
+
+/* هيرو */
+.hero-swiper .swiper-pagination {
+  bottom: 1.5rem !important;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: white;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  width: 28px;
+  border-radius: 99px;
+  opacity: 1;
+  background: linear-gradient(90deg, var(--color-primary-light), white);
+}
+
+.hero-overlay {
+  background: var(--gradient-hero-overlay);
+}
+
+/* كاروسيل */
+.category-carousel img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 8px 16px rgba(61, 36, 80, 0.1));
+}
+
+.category-carousel a:hover img {
+  transform: scale(1.12) translateY(-4px);
+}
+
+/* تابس */
+.product-tab-btn.active {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white !important;
+  border: none !important;
+  box-shadow: var(--shadow-glow);
+}
+
+.product-tabs-panel {
+  animation: sahr-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes sahr-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sahr-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes sahr-pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animate-sahr-float {
+  animation: sahr-float 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 1.4s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-light) 0%,
+    #fff 50%,
+    var(--color-primary-light) 100%
+  );
+  background-size: 400px 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* قائمة جانبية */
+.custom-main-menu {
+  box-shadow: 24px 0 80px rgba(61, 36, 80, 0.2);
+}
+
+/* واتساب */
+.wa-fab-pulse::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.4);
+  animation: sahr-pulse-ring 2s ease-out infinite;
+}
+
+/* تحميل */
+.loading-overlay .spinner {
+  border-width: 3px;
+  box-shadow: var(--shadow-glow);
+}
