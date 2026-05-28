@@ -23,7 +23,6 @@ export function CountdownTimer({
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(endsAt));
 
   useEffect(() => {
-    setTimeLeft(getTimeLeft(endsAt));
     const t = setInterval(() => setTimeLeft(getTimeLeft(endsAt)), 1000);
     return () => clearInterval(t);
   }, [endsAt]);
@@ -35,7 +34,10 @@ export function CountdownTimer({
   ];
 
   return (
-    <div className={cn("flex items-center gap-2 font-mono", className)} dir="ltr">
+    <div
+      className={cn("flex items-center gap-2 font-mono", className)}
+      dir="ltr"
+    >
       {units.map(({ key }) => (
         <div
           key={key}

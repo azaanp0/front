@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,15 +12,19 @@ interface DrawerProps {
   className?: string;
 }
 
-export function Drawer({ isOpen, onClose, title, children, className }: DrawerProps) {
-  const [mounted, setMounted] = useState(false);
+export function Drawer({
+  isOpen,
+  onClose,
+  title,
+  children,
+  className,
+}: DrawerProps) {
+  const mounted = typeof window !== "undefined";
   const dir = useLocaleStore((s) => s.dir);
 
   useEffect(() => {
-    setMounted(true);
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    }
+    if (!isOpen) return;
+    document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
     };
@@ -35,11 +39,13 @@ export function Drawer({ isOpen, onClose, title, children, className }: DrawerPr
         className={cn(
           "relative flex h-full w-[90%] max-w-sm flex-col bg-white shadow-modal transition-transform duration-300 ease-in-out sm:w-full sm:max-w-md",
           dir === "rtl" ? "ms-auto" : "me-auto",
-          className
+          className,
         )}
       >
         <div className="flex items-center justify-between border-b px-4 py-4 sm:px-6">
-          {title && <h2 className="text-lg font-bold text-gray-900">{title}</h2>}
+          {title && (
+            <h2 className="text-lg font-bold text-gray-900">{title}</h2>
+          )}
           <button
             type="button"
             onClick={onClose}
@@ -52,6 +58,6 @@ export function Drawer({ isOpen, onClose, title, children, className }: DrawerPr
         <div className="flex-1 overflow-y-auto">{children}</div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }

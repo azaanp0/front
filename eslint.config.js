@@ -6,7 +6,13 @@ import tseslint from "typescript-eslint";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  globalIgnores([
+    "dist",
+    "cdn.salla.network",
+    "daralamirat.com.sa",
+    "postcss.config.cjs",
+    "tailwind.config.cjs",
+  ]),
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -22,7 +28,10 @@ export default defineConfig([
       },
     },
     rules: {
-      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
       "no-unused-vars": "off",
     },
   },

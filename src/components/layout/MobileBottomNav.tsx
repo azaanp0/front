@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { Home, Search, Heart, LayoutGrid, User } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { useUiStore } from "@/stores/ui.store";
 import { useAuthStore } from "@/stores/auth.store";
 import { cn } from "@/lib/utils";
@@ -20,13 +19,20 @@ function NavItem({
   const className = ({ isActive }: { isActive: boolean }) =>
     cn(
       "selia-bottom-nav-button flex flex-1 flex-col items-center gap-0.5 py-2 text-[10px] font-medium transition",
-      isActive ? "text-[var(--color-primary-reverse)]" : "text-[var(--bottom-nav-text-color)]",
+      isActive
+        ? "text-[var(--color-primary-reverse)]"
+        : "text-[var(--bottom-nav-text-color)]",
     );
 
   if (onClick) {
     return (
       <li className="flex flex-1 justify-center">
-        <button type="button" onClick={onClick} className={className({ isActive: false })} aria-label={label}>
+        <button
+          type="button"
+          onClick={onClick}
+          className={className({ isActive: false })}
+          aria-label={label}
+        >
           {icon}
           <span>{label}</span>
         </button>
@@ -45,7 +51,6 @@ function NavItem({
 }
 
 export function MobileBottomNav() {
-  const { t } = useTranslation();
   const setMenuOpen = useUiStore((s) => s.setMobileMenuOpen);
   const openAuth = useAuthStore((s) => s.openAuthModal);
 
@@ -61,8 +66,16 @@ export function MobileBottomNav() {
           icon={<LayoutGrid className="h-5 w-5" />}
           onClick={() => setMenuOpen(true)}
         />
-        <NavItem to="/wishlist" label="المفضلة" icon={<Heart className="h-5 w-5" />} />
-        <NavItem to="/search" label="بحث" icon={<Search className="h-5 w-5" />} />
+        <NavItem
+          to="/wishlist"
+          label="المفضلة"
+          icon={<Heart className="h-5 w-5" />}
+        />
+        <NavItem
+          to="/search"
+          label="بحث"
+          icon={<Search className="h-5 w-5" />}
+        />
         <NavItem
           label="حسابي"
           icon={<User className="h-5 w-5" />}

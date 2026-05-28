@@ -20,10 +20,6 @@ export default function CheckoutPage() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Form Data
-  const [addressData, setAddressData] = useState<any>(null);
-  const [shippingMethod, setShippingMethod] = useState<string | null>(null);
-
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-content px-4 py-16">
@@ -36,12 +32,20 @@ export default function CheckoutPage() {
     );
   }
 
-  const handlePlaceOrder = (paymentMethodId: string) => {
+  const handlePlaceOrder = (_paymentMethodId: string) => {
     setIsSubmitting(true);
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
-      clearCart({ items: [], subtotal: 0, total: 0, itemsCount: 0, coupon: null, couponDiscount: 0, isDrawerOpen: false } as any);
+      clearCart({
+        items: [],
+        coupon: null,
+        subtotal: 0,
+        shipping: 0,
+        tax_note: "",
+        total: 0,
+        items_count: 0,
+      });
       const mockOrderId = `DA-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
       navigate(`/order-success/${mockOrderId}`, { replace: true });
     }, 2000);
@@ -50,32 +54,26 @@ export default function CheckoutPage() {
   return (
     <>
       <Helmet>
-        <title>{t("checkout.title")} — {import.meta.env.VITE_APP_NAME}</title>
+        <title>
+          {t("checkout.title")} — {import.meta.env.VITE_APP_NAME}
+        </title>
       </Helmet>
       <div className="mx-auto max-w-content px-4 py-8">
-        <h1 className="mb-8 text-2xl font-bold text-gray-900">{t("checkout.title")}</h1>
-        
+        <h1 className="mb-8 text-2xl font-bold text-gray-900">
+          {t("checkout.title")}
+        </h1>
+
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <CheckoutStepper currentStep={step} />
-            
+
             <div className="mt-8">
-              {step === 1 && (
-                <AddressStep
-                  onNext={(data) => {
-                    setAddressData(data);
-                    setStep(2);
-                  }}
-                />
-              )}
+              {step === 1 && <AddressStep onNext={() => setStep(2)} />}
               {step === 2 && (
                 <ShippingStep
                   cartTotal={total}
                   onBack={() => setStep(1)}
-                  onNext={(method) => {
-                    setShippingMethod(method);
-                    setStep(3);
-                  }}
+                  onNext={() => setStep(3)}
                 />
               )}
               {step === 3 && (
@@ -87,7 +85,7 @@ export default function CheckoutPage() {
               )}
             </div>
           </div>
-          
+
           <div className="lg:col-span-4">
             <OrderSummaryPanel />
           </div>

@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { CDN } from "@/constants/store";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import "swiper/css";
 
 export function CategoryCarousel2() {
@@ -19,7 +20,7 @@ export function CategoryCarousel2() {
             768: { slidesPerView: 6 },
             1024: { slidesPerView: 8 },
           }}
-          className="category-carousel category-carousel-2-swiper !overflow-visible"
+          className="category-carousel category-carousel-2-swiper"
         >
           {CDN.categories2.map((image, index) => (
             <SwiperSlide key={index} className="!w-auto">
@@ -29,11 +30,13 @@ export function CategoryCarousel2() {
                 aria-label={`قسم ${index + 1}`}
               >
                 <div className="mx-auto w-fit overflow-hidden rounded-2xl bg-gradient-to-b from-white to-[var(--color-primary-light)]/30 p-2">
-                  <img
+                  <ResponsiveImage
                     src={image}
                     alt={`قسم ${index + 1}`}
                     className="mx-auto h-20 w-20 object-contain md:h-28 md:w-28"
                     loading="lazy"
+                    width={112}
+                    height={112}
                   />
                 </div>
               </Link>

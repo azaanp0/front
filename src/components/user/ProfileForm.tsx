@@ -34,7 +34,7 @@ export function ProfileForm() {
     },
   });
 
-  const onSubmit = async (data: ProfileFormValues) => {
+  const onSubmit = async (_data: ProfileFormValues) => {
     // Simulate API request
     await new Promise((res) => setTimeout(res, 1000));
     toast.success(t("common.save") + " ✓");
@@ -44,12 +44,33 @@ export function ProfileForm() {
     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-xl">
         <div className="grid grid-cols-2 gap-4">
-          <Input label="الاسم الأول" {...register("first_name")} error={errors.first_name?.message} />
-          <Input label="الاسم الأخير" {...register("last_name")} error={errors.last_name?.message} />
+          <Input
+            label="الاسم الأول"
+            {...register("first_name")}
+            error={errors.first_name?.message}
+          />
+          <Input
+            label="الاسم الأخير"
+            {...register("last_name")}
+            error={errors.last_name?.message}
+          />
         </div>
-        <Input label="البريد الإلكتروني" type="email" dir="ltr" className="text-right" {...register("email")} error={errors.email?.message} />
-        <Input label="رقم الجوال" dir="ltr" className="text-right" {...register("phone")} error={errors.phone?.message} />
-        
+        <Input
+          label="البريد الإلكتروني"
+          type="email"
+          dir="ltr"
+          className="text-right"
+          {...register("email")}
+          error={errors.email?.message}
+        />
+        <Input
+          label="رقم الجوال"
+          dir="ltr"
+          className="text-right"
+          {...register("phone")}
+          error={errors.phone?.message}
+        />
+
         <div className="pt-4">
           <Button type="submit" variant="primary" isLoading={isSubmitting}>
             {t("common.save")}

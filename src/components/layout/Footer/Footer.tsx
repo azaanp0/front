@@ -3,11 +3,29 @@ import { Link } from "react-router-dom";
 import { Instagram } from "lucide-react";
 import { FOOTER_LINKS, STORE } from "@/constants/store";
 import { StoreLogo } from "@/components/ui/StoreLogo";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { useLocaleStore } from "@/stores/locale.store";
 
-const PAYMENT_METHODS = ["مدى", "Visa", "Mastercard", "stc pay", "Apple Pay", "تابي", "تمارا", "ميسباي"];
+const PAYMENT_METHODS = [
+  "مدى",
+  "Visa",
+  "Mastercard",
+  "stc pay",
+  "Apple Pay",
+  "تابي",
+  "تمارا",
+  "ميسباي",
+];
 
-function SocialIcon({ href, label, children }: { href: string; label: string; children: ReactNode }) {
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: ReactNode;
+}) {
   return (
     <a
       href={href}
@@ -41,7 +59,9 @@ export function Footer() {
               {STORE.tagline}
             </p>
             <div className="footer-badges mt-6 text-center lg:text-start">
-              <p className="text-sm text-[var(--store-text-secondary)]">الرقم الضريبي</p>
+              <p className="text-sm text-[var(--store-text-secondary)]">
+                الرقم الضريبي
+              </p>
               <b className="text-sm">{STORE.vat}</b>
             </div>
             <button
@@ -68,8 +88,14 @@ export function Footer() {
             <h3 className="footer-title mb-3 text-sm font-bold">روابط مهمة</h3>
             <ul className="footer-list space-y-2 text-sm">
               {FOOTER_LINKS.important.map((l) => (
-                <li key={l.to} className="flex items-start gap-2 before:mt-1 before:content-['•'] before:text-[var(--color-primary)]">
-                  <Link to={l.to} className="hover:text-[var(--color-primary-dark)]">
+                <li
+                  key={l.to}
+                  className="flex items-start gap-2 before:mt-1 before:content-['•'] before:text-[var(--color-primary)]"
+                >
+                  <Link
+                    to={l.to}
+                    className="hover:text-[var(--color-primary-dark)]"
+                  >
                     {l.label}
                   </Link>
                 </li>
@@ -82,7 +108,10 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               {FOOTER_LINKS.nav.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-[var(--color-primary-dark)]">
+                  <Link
+                    to={l.to}
+                    className="hover:text-[var(--color-primary-dark)]"
+                  >
                     {l.label}
                   </Link>
                 </li>
@@ -91,10 +120,17 @@ export function Footer() {
           </div>
 
           <div className="col-span-2 lg:col-span-1">
-            <h3 className="mb-3 text-center text-sm font-bold lg:text-start">تحميل تطبيق الجوال</h3>
+            <h3 className="mb-3 text-center text-sm font-bold lg:text-start">
+              تحميل تطبيق الجوال
+            </h3>
             <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-              <a href={STORE.appStore} target="_blank" rel="noopener noreferrer" aria-label="App Store">
-                <img
+              <a
+                href={STORE.appStore}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="App Store"
+              >
+                <ResponsiveImage
                   src="https://cdn.salla.network/images/appstore.png?v=2.0.5"
                   alt="App Store"
                   width={135}
@@ -103,8 +139,13 @@ export function Footer() {
                   loading="lazy"
                 />
               </a>
-              <a href={STORE.playStore} target="_blank" rel="noopener noreferrer" aria-label="Google Play">
-                <img
+              <a
+                href={STORE.playStore}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Play"
+              >
+                <ResponsiveImage
                   src="https://cdn.salla.network/images/googleplay.png?v=2.0.5"
                   alt="Google Play"
                   width={135}

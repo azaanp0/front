@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { MENU_CATEGORIES, STORE } from "@/constants/store";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 
 export default function CategoriesIndexPage() {
   return (
@@ -20,14 +21,18 @@ export default function CategoriesIndexPage() {
               className="group flex flex-col items-center gap-3 rounded-xl border border-[var(--product-border-color)] bg-[var(--product-bg)] p-4 transition hover:shadow-[var(--shadow-card-hover)]"
             >
               <div className="overflow-hidden rounded-lg">
-                <img
+                <ResponsiveImage
                   src={cat.image}
                   alt={cat.label}
                   className="h-24 w-24 object-contain transition group-hover:scale-110"
                   loading="lazy"
+                  width={96}
+                  height={96}
                 />
               </div>
-              <span className="text-center text-sm font-bold text-[var(--store-text-primary)]">{cat.label}</span>
+              <span className="text-center text-sm font-bold text-[var(--store-text-primary)]">
+                {cat.label}
+              </span>
             </Link>
           ))}
         </div>

@@ -10,6 +10,7 @@ import type { Product } from "@/types/product.types";
 import { ProductBadge } from "@/components/product/ProductBadge";
 import { ProductPrice } from "@/components/product/ProductPrice";
 import { ProductRating } from "@/components/product/ProductRating";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 
 export function ProductCard({ product }: { product: Product }) {
   const { t } = useTranslation();
@@ -48,11 +49,12 @@ export function ProductCard({ product }: { product: Product }) {
           className="product-card__image relative overflow-hidden"
           style={{ height: "var(--product-image-height)" }}
         >
-          <img
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-purple-50 opacity-90" />
+          <ResponsiveImage
             src={product.primary_image}
             alt={name}
             loading="lazy"
-            className="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-[1.06]"
+            className="relative h-full w-full object-cover transition duration-500 group-hover:scale-[1.06]"
             width={400}
             height={400}
           />
@@ -62,7 +64,11 @@ export function ProductCard({ product }: { product: Product }) {
           <div className="absolute end-3 top-3 flex flex-col gap-2">
             <button
               type="button"
-              aria-label={inWishlist ? t("common.remove_from_wishlist") : t("common.add_to_wishlist")}
+              aria-label={
+                inWishlist
+                  ? t("common.remove_from_wishlist")
+                  : t("common.add_to_wishlist")
+              }
               className={cn(
                 "flex h-10 w-10 items-center justify-center rounded-full bg-white/95 shadow-[var(--shadow-soft)] backdrop-blur-sm transition hover:scale-110",
                 inWishlist && "text-[#c0394a]",
@@ -91,16 +97,28 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-2 p-4">
-          <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary-dark)]">{brand}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary-dark)]">
+            {brand}
+          </p>
           <h3 className="line-clamp-2 min-h-[2.75rem] text-sm font-bold leading-snug text-[var(--store-text-primary)] transition group-hover:text-[var(--color-primary-reverse)]">
             {name}
           </h3>
-          <ProductRating average_rating={product.average_rating} reviews_count={product.reviews_count} />
-          <ProductPrice price_with_tax={product.price_with_tax} sale_price_with_tax={product.sale_price_with_tax} />
+          <ProductRating
+            average_rating={product.average_rating}
+            reviews_count={product.reviews_count}
+          />
+          <ProductPrice
+            price_with_tax={product.price_with_tax}
+            sale_price_with_tax={product.sale_price_with_tax}
+          />
         </div>
       </Link>
       <div className="border-t border-[var(--product-border-color)] p-3 md:hidden">
-        <button type="button" className="product-enhanced-btn w-full rounded-xl py-3 text-sm font-bold" onClick={handleAdd}>
+        <button
+          type="button"
+          className="product-enhanced-btn w-full rounded-xl py-3 text-sm font-bold"
+          onClick={handleAdd}
+        >
           {t("common.add_to_cart")}
         </button>
       </div>

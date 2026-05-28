@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
 
 const NAV_KEYS = [
   "free_delivery",
@@ -37,7 +36,11 @@ export function MainNav() {
           ✨ العروض
         </Link>
         {NAV_KEYS.map((key) => (
-          <Link key={key} to={`/category/${key}`} className="sahr-pill shrink-0 whitespace-nowrap text-xs lg:text-sm">
+          <Link
+            key={key}
+            to={`/category/${key}`}
+            className="sahr-pill shrink-0 whitespace-nowrap text-xs lg:text-sm"
+          >
             {t(`nav.${key}`)}
           </Link>
         ))}

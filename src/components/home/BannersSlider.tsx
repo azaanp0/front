@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { CDN } from "@/constants/store";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -17,12 +18,17 @@ export function BannersSlider() {
       >
         {CDN.sliderBanners.map((image, i) => (
           <SwiperSlide key={i}>
-            <Link to="/offers" className="block overflow-hidden rounded-md">
-              <img
+            <Link
+              to="/offers"
+              className="block overflow-hidden rounded-[28px] shadow-[0_24px_70px_rgba(15,23,42,0.12)]"
+            >
+              <ResponsiveImage
                 src={image}
-                alt={`بانر دار الأميرات ${i + 1}`}
-                className="h-auto w-full object-cover"
+                alt={`بانر سحر ${i + 1}`}
+                className="h-[min(40vh,440px)] w-full object-cover"
                 loading="lazy"
+                width={1600}
+                height={620}
               />
             </Link>
           </SwiperSlide>

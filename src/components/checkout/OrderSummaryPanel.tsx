@@ -3,6 +3,7 @@ import { useCartStore } from "@/stores/cart.store";
 import { formatPrice } from "@/utils/formatters";
 import { useLocaleStore } from "@/stores/locale.store";
 import { Input } from "@/components/ui/Input";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { Button } from "@/components/ui/Button";
 
 export function OrderSummaryPanel() {
@@ -14,15 +15,20 @@ export function OrderSummaryPanel() {
 
   return (
     <div className="sticky top-24 rounded-xl bg-white p-6 shadow-sm border border-gray-100">
-      <h3 className="mb-4 text-lg font-bold text-gray-900">{t("cart.title", { count: items.length })}</h3>
-      
+      <h3 className="mb-4 text-lg font-bold text-gray-900">
+        {t("cart.title", { count: items.length })}
+      </h3>
+
       <div className="mb-6 max-h-[300px] overflow-y-auto pr-2 space-y-4">
         {items.map((item) => (
           <div key={item.id} className="flex gap-4">
-            <img
+            <ResponsiveImage
               src={item.image}
               alt={locale === "ar" ? item.name_ar : item.name_en}
               className="h-16 w-12 rounded-md object-cover border border-gray-100"
+              width={48}
+              height={64}
+              loading="lazy"
             />
             <div className="flex-1">
               <p className="text-sm font-medium line-clamp-2 text-gray-900">
@@ -33,7 +39,10 @@ export function OrderSummaryPanel() {
                   {t("product.qty")}: {item.quantity}
                 </span>
                 <span className="text-sm font-bold text-primary">
-                  {formatPrice(item.unit_price_with_tax * item.quantity, locale)}
+                  {formatPrice(
+                    item.unit_price_with_tax * item.quantity,
+                    locale,
+                  )}
                 </span>
               </div>
             </div>

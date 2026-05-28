@@ -1,4 +1,5 @@
 import { CDN, STORE } from "@/constants/store";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 
 export function DoubleBanner2() {
   return (
@@ -11,7 +12,12 @@ export function DoubleBanner2() {
           className="banner banner--fixed flex h-auto basis-1/2 overflow-hidden"
           aria-label="بانر"
         >
-          <img src={CDN.double2Left} alt="بانر" className="h-auto w-full object-cover" loading="lazy" />
+          <ResponsiveImage
+            src={CDN.double2Left}
+            alt="بانر"
+            className="h-auto w-full object-cover"
+            loading="lazy"
+          />
         </a>
         <a
           href={STORE.playStore}
@@ -20,7 +26,12 @@ export function DoubleBanner2() {
           className="banner banner--fixed flex h-auto basis-1/2 overflow-hidden"
           aria-label="بانر"
         >
-          <img src={CDN.double2Right} alt="بانر" className="h-auto w-full object-cover" loading="lazy" />
+          <ResponsiveImage
+            src={CDN.double2Right}
+            alt="بانر"
+            className="h-auto w-full object-cover"
+            loading="lazy"
+          />
         </a>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { Star, ThumbsUp } from "lucide-react";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { type Review } from "@/types/review.types";
 
 interface ReviewCardProps {
@@ -35,13 +36,21 @@ export function ReviewCard({ review }: ReviewCardProps) {
           ))}
         </div>
       </div>
-      
+
       <p className="text-sm text-gray-700 leading-relaxed">{review.body}</p>
 
       {review.images && review.images.length > 0 && (
         <div className="mt-4 flex gap-2 overflow-x-auto">
           {review.images.map((img, i) => (
-            <img key={i} src={img} alt="" className="h-16 w-16 rounded-md object-cover border border-gray-100" />
+            <ResponsiveImage
+              key={i}
+              src={img}
+              alt={`صورة مراجعة ${i + 1}`}
+              className="h-16 w-16 rounded-md object-cover border border-gray-100"
+              width={64}
+              height={64}
+              loading="lazy"
+            />
           ))}
         </div>
       )}

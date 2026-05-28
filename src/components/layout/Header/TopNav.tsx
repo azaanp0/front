@@ -26,7 +26,7 @@ export function TopNav({ scrolled }: { scrolled: boolean }) {
   return (
     <div id="mainnav" className="main-nav-container mx-auto max-w-content px-4 py-3 md:py-4">
       <div className="relative flex items-stretch justify-between">
-        <div className="flex w-1/3 items-center justify-start gap-1">
+        <div className="flex flex-1 items-center justify-start gap-1">
           <button
             type="button"
             className={cn(iconBtn, "gap-2 px-3 !w-auto min-w-[48px]")}
@@ -50,7 +50,7 @@ export function TopNav({ scrolled }: { scrolled: boolean }) {
           <StoreLogo />
         </div>
 
-        <div className="flex w-1/3 items-center justify-end gap-1 sm:gap-2">
+        <div className="flex flex-1 items-center justify-end gap-1 sm:gap-2">
           <button
             type="button"
             onClick={toggleLocale}

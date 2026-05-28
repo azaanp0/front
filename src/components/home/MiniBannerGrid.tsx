@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import type { Banner } from "@/types/banner.types";
 
 export function MiniBannerGrid({ banners }: { banners: Banner[] }) {
@@ -14,7 +15,7 @@ export function MiniBannerGrid({ banners }: { banners: Banner[] }) {
             to={b.link}
             className="group overflow-hidden rounded-[10px] shadow-card transition hover:scale-[1.02] hover:shadow-card-hover"
           >
-            <img
+            <ResponsiveImage
               src={b.image_desktop}
               alt={b.alt_ar}
               className="aspect-[16/10] w-full object-cover transition duration-200 group-hover:scale-105"

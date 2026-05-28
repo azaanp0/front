@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { lazy, Suspense, type ReactNode } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
@@ -60,37 +61,247 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <SuspensePage><HomePage /></SuspensePage> },
-      { path: "search", element: <SuspensePage><SearchPage /></SuspensePage> },
-      { path: "checkout", element: <SuspensePage><CheckoutPage /></SuspensePage> },
-      { path: "order-success/:orderId", element: <SuspensePage><OrderSuccessPage /></SuspensePage> },
-      { path: "order-tracking/:orderId?", element: <SuspensePage><OrderTrackingPage /></SuspensePage> },
-      { path: "brand/:slug", element: <SuspensePage><BrandPage /></SuspensePage> },
-      { path: "category", element: <SuspensePage><CategoriesIndexPage /></SuspensePage> },
-      { path: "category/:slug", element: <SuspensePage><CategoryPage /></SuspensePage> },
-      { path: "offers", element: <SuspensePage><OffersPage /></SuspensePage> },
-      { path: "brands", element: <SuspensePage><BrandsPage /></SuspensePage> },
-      { path: "new", element: <SuspensePage><NewArrivalsPage /></SuspensePage> },
-      { path: "bestsellers", element: <SuspensePage><BestsellersPage /></SuspensePage> },
-      { path: "blog", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "contact", element: <SuspensePage><ContactPage /></SuspensePage> },
-      { path: "about", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "privacy", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "terms", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "returns", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "shipping", element: <SuspensePage><StaticPage /></SuspensePage> },
+      {
+        index: true,
+        element: (
+          <SuspensePage>
+            <HomePage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "search",
+        element: (
+          <SuspensePage>
+            <SearchPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <SuspensePage>
+            <CheckoutPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "order-success/:orderId",
+        element: (
+          <SuspensePage>
+            <OrderSuccessPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "order-tracking/:orderId?",
+        element: (
+          <SuspensePage>
+            <OrderTrackingPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "brand/:slug",
+        element: (
+          <SuspensePage>
+            <BrandPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "category",
+        element: (
+          <SuspensePage>
+            <CategoriesIndexPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "category/:slug",
+        element: (
+          <SuspensePage>
+            <CategoryPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "offers",
+        element: (
+          <SuspensePage>
+            <OffersPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "brands",
+        element: (
+          <SuspensePage>
+            <BrandsPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "new",
+        element: (
+          <SuspensePage>
+            <NewArrivalsPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "bestsellers",
+        element: (
+          <SuspensePage>
+            <BestsellersPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "blog",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "contact",
+        element: (
+          <SuspensePage>
+            <ContactPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "about",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "privacy",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "terms",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "returns",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "shipping",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
       { path: "track", element: staticRoute("تتبع طلبي") },
-      { path: "affiliate", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "warranty", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "branches", element: <SuspensePage><StaticPage /></SuspensePage> },
-      { path: "wishlist", element: <SuspensePage><WishlistPage /></SuspensePage> },
-      { path: "account", element: <SuspensePage><AccountPage /></SuspensePage> },
-      { path: "account/orders", element: <SuspensePage><OrdersPage /></SuspensePage> },
-      { path: "account/orders/:id", element: <SuspensePage><OrderDetailPage /></SuspensePage> },
-      { path: "account/addresses", element: <SuspensePage><AddressesPage /></SuspensePage> },
-      { path: "account/loyalty", element: <SuspensePage><LoyaltyPage /></SuspensePage> },
-      { path: ":slug/p:productId", element: <SuspensePage><ProductPage /></SuspensePage> },
-      { path: "*", element: <SuspensePage><NotFoundPage /></SuspensePage> },
+      {
+        path: "affiliate",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "warranty",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "branches",
+        element: (
+          <SuspensePage>
+            <StaticPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "wishlist",
+        element: (
+          <SuspensePage>
+            <WishlistPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "account",
+        element: (
+          <SuspensePage>
+            <AccountPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "account/orders",
+        element: (
+          <SuspensePage>
+            <OrdersPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "account/orders/:id",
+        element: (
+          <SuspensePage>
+            <OrderDetailPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "account/addresses",
+        element: (
+          <SuspensePage>
+            <AddressesPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "account/loyalty",
+        element: (
+          <SuspensePage>
+            <LoyaltyPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: ":slug/p:productId",
+        element: (
+          <SuspensePage>
+            <ProductPage />
+          </SuspensePage>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <SuspensePage>
+            <NotFoundPage />
+          </SuspensePage>
+        ),
+      },
     ],
   },
 ]);

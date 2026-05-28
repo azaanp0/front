@@ -29,7 +29,7 @@
   --store-text-muted: #8a7a94;
 
   --product-border-color: rgba(198, 170, 208, 0.35);
-  --product-image-height: 18rem;
+  --product-image-height: clamp(12rem, 30vw, 18rem);
   --product-enhanced-btn-bg: linear-gradient(135deg, #b899c8 0%, #9a7aaa 100%);
   --product-enhanced-btn-color: #ffffff;
 
@@ -63,8 +63,17 @@
     rgba(61, 36, 80, 0.15) 60%,
     rgba(61, 36, 80, 0.35) 100%
   );
-  --gradient-section: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  --gradient-brand: linear-gradient(135deg, #3d2450 0%, #8b6b9a 40%, #c6aad0 100%);
+  --gradient-section: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
+  --gradient-brand: linear-gradient(
+    135deg,
+    #3d2450 0%,
+    #8b6b9a 40%,
+    #c6aad0 100%
+  );
   --gradient-shimmer: linear-gradient(
     105deg,
     transparent 38%,
@@ -95,8 +104,10 @@
 }
 
 @layer base {
-  * {
-    @apply border-[var(--product-border-color)];
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   html {
@@ -109,8 +120,16 @@
     line-height: 1.75;
     background-color: var(--bg-primary);
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(198, 170, 208, 0.18), transparent),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(201, 169, 98, 0.06), transparent);
+      radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(198, 170, 208, 0.18),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 100% 100%,
+        rgba(201, 169, 98, 0.06),
+        transparent
+      );
     color: var(--store-text-primary);
   }
 
@@ -125,7 +144,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(
+      180deg,
+      var(--color-primary) 0%,
+      var(--color-primary-dark) 100%
+    );
     border-radius: 99px;
   }
 
@@ -186,14 +209,23 @@ html[dir="ltr"] body {
     content: "";
     height: 1px;
     width: 3rem;
-    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-primary),
+      transparent
+    );
   }
 
   .sahr-divider-gem {
     width: 8px;
     height: 8px;
     transform: rotate(45deg);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-gold) 100%
+    );
     box-shadow: var(--shadow-glow);
   }
 
@@ -243,7 +275,11 @@ html[dir="ltr"] body {
 
   .sahr-pill:hover,
   .sahr-pill.active {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-dark) 100%
+    );
     color: white;
     border-color: transparent;
     box-shadow: var(--shadow-glow);
@@ -359,7 +395,11 @@ html[dir="ltr"] body {
 
 /* تابس */
 .product-tab-btn.active {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
   color: white !important;
   border: none !important;
   box-shadow: var(--shadow-glow);
@@ -452,4 +492,18 @@ html[dir="ltr"] body {
 .loading-overlay .spinner {
   border-width: 3px;
   box-shadow: var(--shadow-glow);
+}
+
+/* Ensure images render and scale correctly on all viewports */
+img,
+picture img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make product card images fill their container on mobile for better visuals */
+.product-card__image img {
+  object-fit: cover;
+  padding: 0;
 }

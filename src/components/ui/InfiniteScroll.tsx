@@ -18,28 +18,32 @@ export function InfiniteScroll({
   const observerTarget = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentTarget = observerTarget.current;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasMore && !isLoading) {
           onLoadMore();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
-    if (observerTarget.current) {
-      observer.observe(observerTarget.current);
+    if (currentTarget) {
+      observer.observe(currentTarget);
     }
 
     return () => {
-      if (observerTarget.current) {
-        observer.unobserve(observerTarget.current);
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
       }
     };
   }, [hasMore, isLoading, onLoadMore]);
 
   return (
-    <div className={cn("flex w-full items-center justify-center py-6", className)} ref={observerTarget}>
+    <div
+      className={cn("flex w-full items-center justify-center py-6", className)}
+      ref={observerTarget}
+    >
       {isLoading && <Spinner size="md" />}
     </div>
   );

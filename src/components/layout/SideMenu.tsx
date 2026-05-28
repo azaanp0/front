@@ -4,13 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  CDN,
   FOOTER_LINKS,
   MENU_CATEGORIES,
   MENU_PROMOS,
   STORE,
 } from "@/constants/store";
 import { StoreLogo } from "@/components/ui/StoreLogo";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { useUiStore } from "@/stores/ui.store";
 import { useAuthStore } from "@/stores/auth.store";
 import { useLocaleStore } from "@/stores/locale.store";
@@ -88,7 +88,9 @@ export function SideMenu() {
               </Link>
 
               <div className="mb-4 rounded-2xl border border-[var(--product-border-color)] bg-gradient-to-br from-[var(--color-primary-light)] to-white p-3 shadow-[var(--shadow-soft)]">
-                <p className="mb-2 px-1 text-xs font-bold text-[var(--color-primary-reverse)]">✨ عروض {STORE.name}</p>
+                <p className="mb-2 px-1 text-xs font-bold text-[var(--color-primary-reverse)]">
+                  ✨ عروض {STORE.name}
+                </p>
                 <div className="grid grid-cols-2 gap-1.5">
                   {MENU_PROMOS.map((p) => (
                     <Link
@@ -113,7 +115,9 @@ export function SideMenu() {
                   <Grid3X3 className="h-5 w-5 text-[var(--color-primary)]" />
                   الأقسام
                 </span>
-                <ChevronDown className={cn("h-5 w-5 transition", catsOpen && "rotate-180")} />
+                <ChevronDown
+                  className={cn("h-5 w-5 transition", catsOpen && "rotate-180")}
+                />
               </button>
 
               {catsOpen ? (
@@ -125,13 +129,17 @@ export function SideMenu() {
                         onClick={close}
                         className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-[var(--color-primary-light)]"
                       >
-                        <img
+                        <ResponsiveImage
                           src={cat.image}
-                          alt=""
+                          alt={cat.label}
                           className="h-12 w-12 shrink-0 rounded-md object-contain"
                           loading="lazy"
+                          width={48}
+                          height={48}
                         />
-                        <span className="text-sm font-medium text-[var(--store-text-primary)]">{cat.label}</span>
+                        <span className="text-sm font-medium text-[var(--store-text-primary)]">
+                          {cat.label}
+                        </span>
                       </Link>
                     </li>
                   ))}
@@ -139,7 +147,9 @@ export function SideMenu() {
               ) : null}
 
               <div className="my-4 border-t border-[var(--product-border-color)] pt-4">
-                <p className="mb-2 px-2 text-xs font-bold text-[var(--store-text-secondary)]">روابط سريعة</p>
+                <p className="mb-2 px-2 text-xs font-bold text-[var(--store-text-secondary)]">
+                  روابط سريعة
+                </p>
                 {FOOTER_LINKS.nav.map((l) => (
                   <Link
                     key={l.to}
@@ -168,13 +178,25 @@ export function SideMenu() {
                 <Sparkles className="h-4 w-4" />
                 الماركات
               </Link>
-              <Link to="/search" onClick={close} className="block rounded-md px-3 py-2.5 text-sm">
+              <Link
+                to="/search"
+                onClick={close}
+                className="block rounded-md px-3 py-2.5 text-sm"
+              >
                 {t("mobile_nav.search")}
               </Link>
-              <Link to="/wishlist" onClick={close} className="block rounded-md px-3 py-2.5 text-sm">
+              <Link
+                to="/wishlist"
+                onClick={close}
+                className="block rounded-md px-3 py-2.5 text-sm"
+              >
                 {t("mobile_nav.wishlist")}
               </Link>
-              <Link to="/account/orders" onClick={close} className="block rounded-md px-3 py-2.5 text-sm">
+              <Link
+                to="/account/orders"
+                onClick={close}
+                className="block rounded-md px-3 py-2.5 text-sm"
+              >
                 {t("mobile_nav.account")} — طلباتي
               </Link>
             </div>
